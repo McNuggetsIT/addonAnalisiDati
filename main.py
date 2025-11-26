@@ -21,7 +21,7 @@ while True:
             print("\n====== Statistiche base ======")
             print("1. Crea array")
             print("2. Gestisci")
-            scelta_stat_base = input("Cosa scegli? [1-4]: ")
+            scelta_stat_base = input("Cosa scegli? [1-2]: ")
     
         elif scelta_stat_base == '1':
             stat_base()
