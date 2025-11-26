@@ -1,4 +1,5 @@
 import numpy as np
+from moduli.service import *
 
 def prodottoMatrici(A:np.array, B:np.array):
     shape_A = np.shape(A)

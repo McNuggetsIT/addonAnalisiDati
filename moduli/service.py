@@ -1,4 +1,17 @@
 import numpy as np
+import sqlite3
+import csv
+
+#nome db che conterrà il dataset csv
+DB_DATASET = "db_california.db"
+CALIFORNIA_HOUSING_DATA = "california_housing_data.csv"
+
+#database in output
+DB_OUTPUT = "output.db"
+
+#crea un db con i file nel csv
+def csv_to_db():
+    pass
 
 def readFileToArray(file_path):
     #restituisce subito l'array inserendo i valori tra i delimitatori
@@ -34,6 +47,35 @@ def saveFileToCSV(file_path, array):
 
     with open(file_path, mode) as f:
         np.savetxt(f, array, delimiter=",", fmt="%.2f")
+        
+def saveFileToDB(array):
+    
+    conn = sqlite3.connect(DB_OUTPUT)
+    cursor = conn.cursor()
+    
+    sql_create_table = """
+        CREATE TABLE IF NOT EXISTS output (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        MedInc REAL,
+        HouseAge REAL,
+        AveRooms REAL,
+        AveBedrms REAL,
+        Population REAL,
+        AveOccup REAL,
+        Latitude REAL,
+        Longitude REAL,
+        MedHouseVal REAL
+        );
+    """
+    
+    cursor.execute(sql_create_table)
+    print("Tabella creata")
+    
+    sql_insert = "INSERT INTO output (MedInc,HouseAge,AveRooms,AveBedrms,Population,AveOccup,Latitude,Longitude,MedHouseVal) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    
+    cursor.executemany(sql_insert, array)
+    
+    conn.commit()
 
 def verifyVector(A):
     dim = A.ndim
