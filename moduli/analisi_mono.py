@@ -1,6 +1,7 @@
 import numpy as np
+from moduli.service import saveFileToCSV, readFileToArray
 
-def stat_base(arr, file_name="dati.csv"):
+def stat_base(arr, file_name="output.csv"):
     print("1. Minimo nell'array")
     print("2. Massimo nell'array")
     print("3. Media")
@@ -21,14 +22,10 @@ def stat_base(arr, file_name="dati.csv"):
         return None
     
     print("Risultato:", ris)
-    
-    with open(file_name, "a") as f:
-        f.write(f"{scelta},{ris}\n")
-    
-    return ris
+    saveFileToCSV(file_name, np.array([ris]))
 
 
-def analis_posizionale(arr, file_name="dati.csv"):
+def analis_posizionale(arr, file_name="output.csv"):
     print("1. Indice del minimo")
     print("2. Indice del massimo")
     print("3. Mediana")
@@ -50,8 +47,4 @@ def analis_posizionale(arr, file_name="dati.csv"):
         return None
     
     print("Risultato:", ris)
-
-    with open(file_name, "a") as f:
-        f.write(f"{scelta},{ris}\n")
-    
-    return ris
+    saveFileToCSV(file_name, np.array([ris]))
