@@ -1,6 +1,7 @@
 import numpy as np
+from moduli.service import *
 
-def prodottoMatrici(A:np.array, B:np.array):
+def prodottoMatrici(A:np.array, B:np.array,):
     shape_A = np.shape(A)
     shape_B = np.shape(B)
     if shape_A[1] == shape_B[0]:
@@ -19,7 +20,7 @@ def covarianzaMatrice(At:np.array):
     transpose = transpostaMatrice(At)
     return np.cov(transpose)
     
-def somma_colonne(matrix):
+def somma_colonne(matrix, file_name = "california_housing_data.csv"):
     
     sum1 = np.sum(matrix , axis = 0)
     print("Somma per colonne:" , sum1)
