@@ -56,17 +56,17 @@ def saveFileToDB(array):
     sql_create_table = """
         CREATE TABLE IF NOT EXISTS output (
         variable TEXT PRIMARY KEY,
-        Min REAL,
-        Max REAL,
-        Mean REAL,
-        Std REAL,
+        minimo REAL,
+        massimo REAL,
+        media REAL,
+        stdd REAL,
         );
     """
     
     cursor.execute(sql_create_table)
     print("Tabella creata")
     
-    sql_insert = "INSERT INTO output (variable, min, max, mean, std) VALUES (?, ?, ?, ?, ?)"
+    sql_insert = "INSERT INTO output (variabile, minimo, massimo, media, stdd) VALUES (?, ?, ?, ?, ?)"
     
     cursor.executemany(sql_insert, array)
     
