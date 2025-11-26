@@ -34,7 +34,7 @@ def saveFileToCSV(file_path, array):
 
     with open(file_path, mode) as f:
         np.savetxt(f, array, delimiter=",", fmt="%.2f")
-
+s
 
 def verifyVector(A):
     dim = A.ndim
