@@ -27,11 +27,14 @@ def readFileToArray(file_path):
     return array
 
 def saveFileToCSV(file_path, array):
+    #effettua la scelta dell'operazione
     type_write = int(input("Scegliere: \n1. Sovrascrivere il file\n2. Aggiungere al file\n"))
+    #in base alla scelta modifica il tipo di scrittura
     if type_write == 1:
         type_write = "w"
     else:
         type_write = "a"
+    #scrive sul file con il tipo prestabilito
     with open(file_path, type_write) as f:
         for row in array:
             #la funzione map prende un iterabile e ci applica la funzione
@@ -44,3 +47,12 @@ def verifyVector(A):
         return True
     else:
         return False
+
+analisi = readFileToArray("moduli/giorgio/analisi.csv")
+A = np.array(analisi)
+#ndim restituisce la dimensione dell'array, senza restituirne i dettagli riga e colonna
+A.ndim
+
+output = saveFileToCSV("moduli/giorgio/output.csv", A)
+
+print(A)
