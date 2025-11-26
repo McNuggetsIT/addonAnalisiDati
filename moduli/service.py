@@ -55,23 +55,18 @@ def saveFileToDB(array):
     
     sql_create_table = """
         CREATE TABLE IF NOT EXISTS output (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        MedInc REAL,
-        HouseAge REAL,
-        AveRooms REAL,
-        AveBedrms REAL,
-        Population REAL,
-        AveOccup REAL,
-        Latitude REAL,
-        Longitude REAL,
-        MedHouseVal REAL
+        variable TEXT PRIMARY KEY,
+        Min REAL,
+        Max REAL,
+        Mean REAL,
+        Std REAL,
         );
     """
     
     cursor.execute(sql_create_table)
     print("Tabella creata")
     
-    sql_insert = "INSERT INTO output (MedInc,HouseAge,AveRooms,AveBedrms,Population,AveOccup,Latitude,Longitude,MedHouseVal) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    sql_insert = "INSERT INTO output (variable, min, max, mean, std) VALUES (?, ?, ?, ?, ?)"
     
     cursor.executemany(sql_insert, array)
     
