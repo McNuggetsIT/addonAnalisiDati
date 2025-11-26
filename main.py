@@ -19,9 +19,15 @@ while True:
         arr = readFileToArray("analisi.csv")
         
         if sotto_scelta == '1': 
-            stat_base(arr)
-        elif sotto_scelta == '2':
-            analis_posizionale(arr)
+            print("\n====== Statistiche base ======")
+            print("1. Crea array")
+            print("2. Gestisci")
+            scelta_stat_base = input("Cosa scegli? [1-2]: ")
+    
+        elif scelta_stat_base == '1':
+            stat_base()
+        elif scelta_stat_base == '2':
+            analis_posizionale()
         else:
             print("Scelta non valida")
             
