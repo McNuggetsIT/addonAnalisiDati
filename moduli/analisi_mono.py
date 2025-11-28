@@ -1,6 +1,7 @@
 import numpy as np
 from moduli.service import saveFileToCSV, readFileToArray
 
+
 def stat_base(arr, file_name="output.csv"):
     print("1. Minimo nell'array")
     print("2. Massimo nell'array")
